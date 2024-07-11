@@ -6,6 +6,8 @@ import { CircleUser, MenuIcon } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { redirect } from "next/navigation";
+import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
+
 
 export default async function DashboardLayout({children} : {children: ReactNode}) {
 	const {getUser} = getKindeServerSession();
@@ -40,12 +42,14 @@ export default async function DashboardLayout({children} : {children: ReactNode}
 					<DropdownMenuContent align={"end"}>
 						<DropdownMenuLabel>My Account</DropdownMenuLabel>
 						<DropdownMenuSeparator />
-						<DropdownMenuItem>Logout</DropdownMenuItem>
+						<DropdownMenuItem asChild><LogoutLink>Logout</LogoutLink></DropdownMenuItem>
 						
 					</DropdownMenuContent>
 				</DropdownMenu>
 			</header>
-			{children}
+			<main className="my-5">
+				{children}
+			</main>
 		</div>
 	)
 }
