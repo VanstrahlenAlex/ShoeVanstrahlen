@@ -12,7 +12,7 @@ import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
 export default async function DashboardLayout({children} : {children: ReactNode}) {
 	const {getUser} = getKindeServerSession();
 	const user = await getUser();
-	if(!user){
+	if(!user || user.email !== 'green.raikage@gmail.com'){
 		return redirect("/")
 	}
 	return (
