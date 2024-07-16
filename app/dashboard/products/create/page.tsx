@@ -17,6 +17,7 @@ import { productSchema } from "@/app/lib/zodSchema";
 import { useState } from "react";
 import Image from "next/image";
 import { categories } from "@/app/lib/categories";
+import { SubmitButton } from "@/app/components/SubmitButtons";
 
 export default function ProductCreateRoute() {
 	const [images, setImages] = useState<string[]>([])
@@ -170,7 +171,7 @@ export default function ProductCreateRoute() {
 						
 					</CardContent>
 					<CardFooter>
-						<Button>Create Product</Button>
+						<SubmitButton />
 					</CardFooter>
 				</Card>
 			</form>

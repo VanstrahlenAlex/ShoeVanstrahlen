@@ -7,10 +7,10 @@ export const categories = [
 	{
 		id: 1,
 		title: 'Women',
-		name: 'men',
+		name: 'women',
 	},
 	{
-		id: 2,
+		id: 3,
 		title: 'Kids',
 		name: 'kids',
 	}
