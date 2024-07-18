@@ -1,3 +1,4 @@
+import EditForm from "@/app/components/dashboard/EditForm";
 import prisma from "@/app/lib/db"
 import { notFound } from "next/navigation";
 
@@ -15,11 +16,11 @@ async function getData(productId: string) {
 	return data;
 }
 
-export default async function EditRoute() {
-	const data = await getData()
+export default async function EditRoute({params} : { params: { id: string } }) {
+	const data = await getData(params.id)
 	return (
-		<div>
-			<h1>Edit</h1>
-		</div>
+		<>
+			<EditForm data={data} />
+		</>
 	)
 }
