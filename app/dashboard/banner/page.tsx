@@ -13,19 +13,9 @@ import { useState } from "react";
 import { useFormState } from "react-dom";
 
 export default function BannerRoute() {
-	const [images, setImages] = useState(undefined);
-	const [lastResult, action] = useFormState(createProduct, undefined);
 
-	const [form, fields] = useForm({
-		lastResult,
 
-		onValidate({formData}){
-			return parseWithZod(formData, {schema: bannerSchema})
-		},
-
-		shouldValidate: "onBlur",
-		shouldRevalidate: "onInput",
-	})
+	
 	return (
 		<>
 			<div className="flex items-center justify-end">
