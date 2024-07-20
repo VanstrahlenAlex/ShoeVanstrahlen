@@ -93,7 +93,7 @@ export async function deleteProduct(formData: FormData) {
 	redirect("/dashboard/products")
 }
 
-export async function createBanner(formData: FormData) {
+export async function createBanner(prevState: any,formData: FormData) {
 	const { getUser } = getKindeServerSession();
 	const user = await getUser();
 

@@ -1,5 +1,5 @@
 "use client";
-import { createProduct } from "@/app/actions";
+import { createBanner, createProduct } from "@/app/actions";
 import { SubmitButton } from "@/app/components/SubmitButtons";
 import { UploadDropzone } from "@/app/lib/uploadthing";
 import { bannerSchema } from "@/app/lib/zodSchema";
@@ -17,7 +17,7 @@ import { useFormState } from "react-dom";
 
 export default function BannerRoute() {
 	const [image, setImage] = useState<string | undefined>(undefined);
-	const [lastResult, action] = useFormState(createProduct, undefined);
+	const [lastResult, action] = useFormState(createBanner, undefined);
 
 	const [form, fields] = useForm({
 		lastResult,
