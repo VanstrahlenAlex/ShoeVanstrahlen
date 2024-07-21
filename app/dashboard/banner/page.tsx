@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-async-client-component */
 "use client";
 import { createProduct } from "@/app/actions";
 import prisma from "@/app/lib/db";
@@ -70,7 +71,7 @@ export default async function BannerRoute() {
 												<DropdownMenuLabel>Actions</DropdownMenuLabel>
 												<DropdownMenuSeparator />
 												<DropdownMenuItem className='text-red-600'>
-													<Link href={``}>Delete</Link> 
+													<Link href={`/dashboard/banner/${item.id}/delete`}>Delete</Link> 
 												</DropdownMenuItem>
 											</DropdownMenuContent>
 										</DropdownMenu>
