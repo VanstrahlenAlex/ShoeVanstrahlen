@@ -5,6 +5,7 @@ import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
 import { ShoppingBag } from 'lucide-react';
 import UserDropdown from './UserDropdown';
 import { Button } from '@/components/ui/button';
+import { LoginLink, RegisterLink } from '@kinde-oss/kinde-auth-nextjs/components';
 
 export default async function Navbar() {
 	const { getUser } = getKindeServerSession();
@@ -34,7 +35,13 @@ export default async function Navbar() {
 			):(
 				<>
 					<div className='hidden md:flex md:flex-1 md:items-center md:justify-end md:space-x-2'>
-						<Button>Sign In</Button>
+						<Button variant={"ghost"} asChild>
+							<LoginLink>Sign In</LoginLink>
+						</Button>
+						<span className='h-6 w-px bg-gray-200'></span>	
+						<Button variant={"ghost"} asChild>
+							<RegisterLink>Create Account</RegisterLink>
+						</Button>
 					</div>
 				</>
 			)}
