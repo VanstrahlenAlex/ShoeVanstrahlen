@@ -11,7 +11,7 @@ export default function DeleteBannerRoute({params} : {params: {id: string}}) {
 				<CardHeader>
 					<CardTitle>Are you absolutey sure? </CardTitle>
 					<CardDescription>
-						This action cannot be undone. This will permanently delete this product and remove all data from our servers.
+						This action cannot be undone. This will permanently delete this Banner and remove all data from our servers.
 					</CardDescription>
 				</CardHeader>
 				<CardFooter className="w-full flex justify-between">
