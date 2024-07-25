@@ -6,10 +6,14 @@ import { ShoppingBag } from 'lucide-react';
 import UserDropdown from './UserDropdown';
 import { Button } from '@/components/ui/button';
 import { LoginLink, RegisterLink } from '@kinde-oss/kinde-auth-nextjs/components';
+import { redis } from '@/app/lib/redis';
+import { Cart } from '@/app/lib/interfaces';
 
 export default async function Navbar() {
 	const { getUser } = getKindeServerSession();
 	const user = await getUser();
+
+	const cart : Cart | null = await redis.get(`cart-${user?.id}`)
   return (
 	<nav className='w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 py-5 flex items-center justify-between'>
 		<div className='flex items-center justify-between'>
