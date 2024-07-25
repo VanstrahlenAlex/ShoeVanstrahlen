@@ -6,6 +6,7 @@ import { bannerSchema, productSchema } from "./lib/zodSchema";
 import prisma from "./lib/db";
 import { redis } from "./lib/redis";
 import { Cart } from "./lib/interfaces";
+import { revalidatePath } from "next/cache";
 
 export async function createProduct(prevState: unknown, formData: FormData) {
 	const { getUser } = getKindeServerSession();
@@ -198,5 +199,17 @@ export async function addItem(productId: string) {
 		}
 	}
 	
-	await redis.set(`cart-${user.id}`, myCart )
+	await redis.set(`cart-${user.id}`, myCart );
+
+	revalidatePath("/", "layout")
+}
+
+
+export async function deleteItem(productId: string) {
+	const { getUser } = getKindeServerSession();
+	const user = await getUser();
+	if(!user){
+		return redirect("/");
+	}
+	
 }
