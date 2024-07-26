@@ -1,8 +1,12 @@
+import { deleteItem } from "@/app/actions";
+import { DeleteItem } from "@/app/components/SubmitButtons";
 import { Cart } from "@/app/lib/interfaces";
 import { redis } from "@/app/lib/redis";
 import { Button } from "@/components/ui/button";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server"
+import { ShoppingBag } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 
 export default async function BagRoute() {
@@ -24,8 +28,18 @@ export default async function BagRoute() {
 	return(
 		<div className="max-w-2xl mx-auto mt-10 min-h-[55vh]">
 			{cart?.items.length === 0 ? (
-				<div>
-					<h1>Nothing in the Shopping Bag</h1>
+				<div className="flex min-h-[400px] flex-col items-center justify-center rounded-lg border-4 border-dashed p-8 text-center mt-20">
+					<div className="flex h-20 w-20 items-center justify-center rounded-full bg-primary/10">
+						<ShoppingBag className="w-10 h-10 text-primary" />
+					</div>
+					<h2 className="mt-6 text-xl font-semibold">You dont have any products in your Bag</h2>
+					<p className="mb-8 mt-2 text-center text-sm leading-6 text-muted-foreground max-w-sm mx-auto">
+						You currently dont have any products in your shopping bag. Please add some so that you can see them right here
+					</p>
+
+					<Button asChild>
+						<Link href={"/"}>Shop Now!</Link>
+					</Button>
 				</div>
 			) : (
 				<div className="flex flex-col gap-y-10">
@@ -43,7 +57,10 @@ export default async function BagRoute() {
 									<p>{item.quantity} x</p>
 									<p>${item.price}</p>
 								</div>
-								<p className="font-medium text-primary text-end">Delete</p>
+								<form action={deleteItem} className="text-end">
+									<input type="hidden"  name="productId" value={item.id} />
+									<DeleteItem />
+								</form>
 							</div>
 						</div>
 					</div>
